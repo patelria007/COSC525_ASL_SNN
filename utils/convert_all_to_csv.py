@@ -18,15 +18,15 @@ if not os.path.isdir(AEDAT):
     os.mkdir(AEDAT)
 
 # Move all zipped files to data
-os.system(F"mv ../*.zip {TARBALLS}")
+#os.system(F"move {DATA}/*.zip {TARBALLS}")
 
-# Unzip all tarballs
+# Unzip all tarballss
 for i in tqdm(os.listdir(TARBALLS)):
     if i.endswith(".zip"):
         FILE = f"{TARBALLS}/{i}"
-        os.system(f"unzip {FILE} -d {AEDAT}")
+        os.system(f"tar -xf {FILE} -C {AEDAT}")
         if "__MACOSX" in os.listdir(AEDAT):
-            os.system(f"rm -rf {AEDAT}/__MACOSX")
+            os.system(f"rmdir {AEDAT}/__MACOSX")
 
 
 for i in tqdm(sorted(os.listdir(AEDAT))):
