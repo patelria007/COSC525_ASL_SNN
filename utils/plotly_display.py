@@ -39,10 +39,10 @@ class DVSDataset:
                     data[3].append(int(row[4]))
 
             # Data formatted as an array of events.    
-            df['timestamp'] = data[0]
-            df['x'] = data[1]
-            df['y'] = data[2]
-            df['polarity'] = data[3]
+            df['timestamp'] = data[0] # timestamp in microsec
+            df['x'] = data[1] # pixel position x
+            df['y'] = data[2] # pixel position y
+            df['polarity'] = data[3] # polarity
             
         else:
             '''
@@ -58,7 +58,7 @@ class DVSDataset:
             print("Not made to work with h5 file atm")
         
         minClockTime = df['timestamp'][0]        
-        df['relTime'] = df['timestamp'] - minClockTime
+        df['relTime'] = df['timestamp'] - minClockTime # relative time 
         
         self.dataset = df.drop_duplicates()
         self.num_unique_timestamps = int(self.dataset['relTime'].iloc[-1]) #len(self.dataset['relTime'].unique().tolist())
