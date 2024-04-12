@@ -8,7 +8,7 @@ The data is in the form of 5 `.zip` files, one for each of the subjects used in 
 
 ### Dataset Characteristics:
 * 24 classes (`A-Y`, excludes `J`)
-* ![f](https://github.com/patelria007/COSC525_ASL_SNN/assets/91634833/3ce1998e-37fc-417a-a190-4935d9da2491)
+ ![f](https://github.com/patelria007/COSC525_ASL_SNN/assets/91634833/3ce1998e-37fc-417a-a190-4935d9da2491)
 
 * 5 subjects used to pose handshapes
 * 4,200 samples **_per letter_** (100,800 total samples)
