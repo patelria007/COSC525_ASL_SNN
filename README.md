@@ -8,11 +8,11 @@ The data is in the form of 5 `.zip` files, one for each of the subjects used in 
 
 ### Dataset Characteristics:
 * 24 classes (`A-Y`, excludes `J`)
-* ![f](https://github.com/patelria007/COSC525_ASL_SNN/assets/91634833/cbf53feb-2768-4d83-b845-0c0dc50b1001)
+* ![f](https://github.com/patelria007/COSC525_ASL_SNN/assets/91634833/3ce1998e-37fc-417a-a190-4935d9da2491)
 
 * 5 subjects used to pose handshapes
 * 4,200 samples **_per letter_** (100,800 total samples)
     * Each sample lasts 100 milliseconds 
 * Recorded with iniLabs DAVIS240c NVS camera
-    * Office with constant illumination, low envioronmental noise
+    * Office with constant illumination, low environmental noise
 
