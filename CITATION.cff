@@ -1,0 +1,28 @@
+# This CITATION.cff file was generated with cffinit.
+# Visit https://bit.ly/cffinit to generate yours today!
+
+cff-version: 1.2.0
+title: CSNN4ASLDVS
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Ria
+    family-names: Patel
+    email: rpatel77@vols.utk.edu
+    orcid: 'https://orcid.org/0000-0002-0723-7911'
+  - given-names: Sujit
+    family-names: Tripathy
+    email: stripat3@vols.utk.edu
+  - given-names: Zachary
+    family-names: Sublett
+    email: zsublett@vols.utk.edu
+  - given-names: Seoyoung
+    family-names: An
+    email: san5@vols.utk.edu
+  - given-names: Riya
+    family-names: Patel
+    email: rpatel90@vols.utk.edu
+repository-code: 'https://github.com/patelria007/COSC525_ASL_SNN.git'
+license: GPL-3.0
