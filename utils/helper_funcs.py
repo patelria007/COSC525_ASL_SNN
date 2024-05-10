@@ -2,8 +2,6 @@ import pandas as pd
 import dv_processing as dv
 import numpy as np
 import os, time
-# import matplotlib.pyplot as plt
-# from PIL import Image
 
 def getRecordingDuration(record):
     """
@@ -34,6 +32,19 @@ def getSampleDuration(sample):
     start, end = sample.timestamps()[0], sample.timestamps()[-1]
     duration = end - start
     return duration
+
+def getRecordingResolution(record):
+    '''
+    Get the resolution of the recording sample.
+
+    Args:
+    record (dv.io.BaseRecording): The recording object.
+
+    Returns:
+    tuple: The resolution of the recording (width, height)
+    '''
+    resolution = record.getEventResolution()
+    return resolution
 
 def getNumEvents(sample):
     """
@@ -128,9 +139,29 @@ def get_batch_indices(df, batches, N, PRINT=False):
     batch.reset_index(drop=True, inplace=True)
     return batch
 
-def sample_2_image(sampleN, metadata):
+def dv_sample_2_image(resolution, sample):
+    '''
+    Convert a sample in DV Processing to an image.
+
+    Args:
+    resolution (tuple): The resolution of the sample (width, height)
+    sample (dv.EventStore): Contains information about the events, duration, timestamp range, etc.
+    
+    Returns:
+    np.ndarray: The image representation of the sample 
+    '''
+
+    white = (255.0, 255.0, 255.0)
+    black = (0.0, 0.0, 0.0)
+
+    eviz = dv.visualization.EventVisualizer(resolution, white, black, black)
+    img = eviz.generateImage(sample)
+
+    return img
+
+def pd_sample_2_image(sampleN, metadata):
     """
-    Convert a sample to an image.
+    Convert a sample in Pandas Dataframe to an image.
 
     Args:
     sampleN (pd.DataFrame): The DataFrame representing a sample.
@@ -171,7 +202,7 @@ def get_sample_freq_from_batch(batch, metadata, IMGS=False, PRINT=False):
         
         # Gets first image in first sample
         if IMGS:
-            img = sample_2_image(sample, metadata)
+            img = pd_sample_2_image(sample, metadata)
             imgs.append(img)
             IMGS = False
             if PRINT: 
@@ -184,6 +215,33 @@ def get_sample_freq_from_batch(batch, metadata, IMGS=False, PRINT=False):
     return np.array(sample_freq), np.array(imgs)
 
 def generate_datasets_csv(letter, batch_time=int(3e6)):
+    """
+    Generate training and testing datasets for a given letter.
+
+    Args:
+    letter (str): The letter for which to generate the datasets.
+    batch_time (int, optional): The duration of each batch in microseconds. Defaults to 3000000 (3 seconds).
+
+    Notes:
+    - This function reads recordings for the given letter from five subjects and creates training and testing datasets.
+    - The function reads AEDAT recordings and corresponding CSV files for each subject and letter.
+    - For each subject, it splits the recordings into batches and assigns three batches for training and three for testing.
+    - The function adjusts the timestamps of the events to make them relative within each batch.
+    - It then saves the training and testing datasets as CSV files in the '../data/train' and '../data/test' directories respectively.
+
+    Example:
+    >>> generate_datasets_csv('a', batch_time=2000000)
+    Reading recording...
+    Batching trainset for Subject 1...
+    Batching testset for Subject 1...
+    ...
+    Saving training set to ../data/train/a.csv..
+    Saved!
+    Saving testing set to ../data/test/a.csv...
+    Saved!
+    Run Time - Letter a: 12.345 sec
+    """
+    
     start = time.time()
 
     # Create Train and Test directories

@@ -1,3 +1,13 @@
+'''
+Credits to Dr. Charlie Rizzo from the University of Tennessee - Knoxville. 
+
+This code was used as a reference for us to understand how to visualize 
+the spatiotemporal data within the ASL-DVS dataset. Dr. Rizzo created 
+a great script that generates HTML-style Plotly animations of the data.
+Using Dr. Rizzo's code, we generated 2 animations and uploaded them
+inside the `animations/` directory of this project.
+'''
+
 import csv
 import sys
 import os
