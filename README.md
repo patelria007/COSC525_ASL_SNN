@@ -31,8 +31,10 @@ Access to the [preprocessed ASL-DVS subset](https://drive.google.com/file/d/1Xd7
 The data is in the form of 5 `.zip` files, one for each of the subjects used in data collection. The authors of the original code repository, [NVS2Graph](https://github.com/PIX2NVS/NVS2Graph/tree/master), developed this dataset to accompany their code.
 
 ### Dataset Characteristics:
-* 24 classes (`A-Y`, excludes `J`)
- ![f](https://github.com/patelria007/COSC525_ASL_SNN/assets/91634833/3ce1998e-37fc-417a-a190-4935d9da2491)
+
+![f](https://github.com/patelria007/COSC525_ASL_SNN/assets/91634833/3ce1998e-37fc-417a-a190-4935d9da2491)
+
+* 24 classes (`A-Y`, excludes `J`) 
 * 5 subjects used to pose handshapes
 * 4,200 samples **_per letter_** (100,800 total samples)
     * Each sample lasts 100 milliseconds 
