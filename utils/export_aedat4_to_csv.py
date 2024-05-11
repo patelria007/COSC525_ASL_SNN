@@ -1,3 +1,19 @@
+"""
+Convert AEDAT4 files to CSV format.
+
+This script converts AEDAT4 files to CSV format. It uses the 
+`dv_processing` library for handling AEDAT4 files and the 
+`argparse` module for parsing command-line arguments.
+
+Usage:
+    python script.py --file <path_to_aedat4_file> --dir <output_directory>
+
+Arguments:
+    --file (str): Path to the AEDAT4 file to be converted.
+    --dir (str): Path to the directory where the CSV file will be saved.
+"""
+
+
 import dv_processing as dv
 import argparse
 import pathlib
