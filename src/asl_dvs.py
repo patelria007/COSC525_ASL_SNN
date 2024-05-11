@@ -61,18 +61,7 @@ class ASLDVS(Dataset):
             name = f"{data_path}/{name}"
             self.data.append(name)
 
-
-
-        # self.data = df['file'].to_list() # Contains file paths
-        self.targets = df['label'].to_list()
-
-        # PATH = f"{data_path}/train" if train else f"{data_path}/test"
-        # for file in sorted(os.listdir(PATH)):
-        #     if file.endswith("bin"):
-        #         FILE_PATH = f"{PATH}/{file}"
-        #         label = file.split('_')[0]
-        #         self.data.append(FILE_PATH)
-        #         self.targets.append(self.int_classes[label])
+        self.targets = df['label'].to_list() # Contains labels 
 
 
     def __getitem__(self, index: int) -> Tuple[Any, Any]:
@@ -80,14 +69,6 @@ class ASLDVS(Dataset):
         Returns:
             (events, target) where target is index of the target class.
         """
-        # events, target = scio.loadmat(self.data[index]), self.targets[index]
-        # events = make_structured_array(
-        #     events["ts"],
-        #     events["x"],
-        #     self.sensor_size[1] - 1 - events["y"],
-        #     events["pol"],
-        #     dtype=self.dtype,
-        # )
 
         # Get events and target from .bin file
         FILE, target = self.data[index], self.targets[index]
@@ -106,10 +87,3 @@ class ASLDVS(Dataset):
 
     def __len__(self):
         return len(self.data)
-
-
-    # def _check_exists(self):
-    #     return (
-    #         self._is_file_present()
-    #         and self._folder_contains_at_least_n_files_of_type(100800, ".mat")
-    #     )
