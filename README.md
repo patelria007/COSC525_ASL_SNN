@@ -46,3 +46,10 @@ The data is in the form of 5 `.zip` files, one for each of the subjects used in 
 `utils/data_preprocess.ipynb`: Jupyter Notebook that generates the preprocessed training and validation datasets in the form of `.bin` Numpy files. These will easily load into the PyTorch DataLoader that will then input into our CSNN. 
 
 ## CSNN Model Training
+
+### Dataset Class
+`src/asl_dvs_gcp.py`: ASL-DVS class that loads in the dataset into the PyTorch DataLoader (use when performing model training in Google Cloud). It mimics how the Tonic library loads in the N-MNIST dataset. 
+
+`src/asl_dvs.py`: same as above, but use if training is not occuring in the Google Cloud
+
+`src/CSNN_Model_Training_Validation.ipynb`: Jupyter Notebook that performs CSNN model training and validation in the Google Cloud Vertex AI Machine Learning Framework. It utilizes Buckets to load in the dataset, so be sure to upload [this pre-processed dataset](https://drive.google.com/file/d/1Xd7xBqTR4KRLAyJYcWkxIJ3DVVw3kl56/view?usp=sharing) when using GCP. 
